@@ -22,8 +22,8 @@
             transition: background-color 0.3s, color 0.3s;
         }
         .container {
-            max-width: 600px; /* Set a maximum width for the content */
-            width: 100%; /* Allow it to be responsive */
+            max-width: 600px;
+            width: 100%;
         }
         h1 {
             color: #333;
@@ -130,6 +130,22 @@
             margin: 10px auto;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
+        footer {
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        .light-footer {
+            background-color: #eaeaea;
+            color: #333;
+        }
+        .dark-footer {
+            background-color: #444;
+            color: #f9f9f9;
+        }
     </style>
 </head>
 <body>
@@ -154,9 +170,12 @@
         <div id="mainContent" style="display: none;">
             <h1 id="greeting"></h1>
             <div class="message-box">
-                <p>If you need to message me urgently, please fill out the form below. I’ll do my best to respond as soon as possible!</p><p> OR contact me directly via this email kael.official20@gmail.com
+                <p>If you need to message me urgently, please fill out the form below. I’ll do my best to respond as soon as possible!</p>
+                <p>OR contact me directly via this email: <a href="mailto:kael.official20@gmail.com">kael.official20@gmail.com</a></p>
                 <p>(Tagalog: Kung kailangan mo akong i-message agad, pakifill out ang form sa ibaba. Gagawin ko ang lahat para makapag-reply kaagad!)</p>
-                <p>services: i also offer otp services for shopee,lazada,tiktok and other site and apps 😊 <a href="https://www.facebook.com/61567819924512/posts/122099861432593997/">link for details</a></p><p> ALSO I'm a ws,tg,b+ encoder.💸 want to join?  click the link for more details <a href="https://www.facebook.com/61567819924512/posts/122100976904593997/"> link for details</a></p>                <form id="contactForm" action="https://formspree.io/f/mkgnojbn" method="POST">
+                <p>Services: I also offer OTP services for Shopee, Lazada, TikTok, and other sites and apps 😊 <a href="https://www.facebook.com/61567819924512/posts/122099861432593997/">link for details</a></p>
+                <p>ALSO I'm a WS, TG, B+ encoder.💸 Want to join? Click the link for more details <a href="https://www.facebook.com/61567819924512/posts/122100976904593997/">link for details</a></p>
+                <form id="contactForm" action="https://formspree.io/f/mkgnojbn" method="POST">
                     <label>
                         Your email:
                         <input type="email" name="email" class="form-input" required>
@@ -172,6 +191,10 @@
         </div>
     </div>
 
+    <footer id="footer" class="light-footer">
+        <p>made by: norwell⚡</p>
+    </footer>
+
     <script>
         const colors = ['red', 'blue', 'green', 'yellow', 'orange', 'purple'];
         let colorToGuess = colors[Math.floor(Math.random() * colors.length)];
@@ -183,9 +206,10 @@
         const sunIcon = document.getElementById('sunIcon');
         const moonIcon = document.getElementById('moonIcon');
         const submissionInfo = document.getElementById('submissionInfo');
+        const footer = document.getElementById('footer');
 
         // Initialize successful attempts
-        let successfulAttempts = localStorage.getItem('successfulAttempts') || 0;
+        let successfulAttempts = parseInt(localStorage.getItem('successfulAttempts')) || 0;
 
         function setGreeting() {
             const hours = new Date().getHours();
@@ -217,6 +241,8 @@
 
         toggleButton.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
+            footer.classList.toggle('dark-footer');
+            footer.classList.toggle('light-footer');
 
             if (body.classList.contains('dark-mode')) {
                 sunIcon.style.display = 'none';
